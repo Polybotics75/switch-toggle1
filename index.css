@@ -1,0 +1,258 @@
+@font-face{
+    font-family: sora-bold;
+    src: url('./sora_bold.ttf');
+}
+
+:root{
+    --white: #FAFAFA;
+    --pale: #EEEEEE;
+    --dpale: #D3D3D3;
+    --black: #121212;
+    --switch-on: linear-gradient( rgba(149, 106, 247), rgb(91, 40, 209), rgba(149, 106, 247) );
+    --primary: rgba(149, 106, 247, 0.3);
+    
+    /*FONT*/
+    --bold: sora-bold;
+}
+
+*,
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    background: var(--pale);
+    transition: 1.5s ease all;
+}
+
+
+/*ANIMATIONS*/
+
+@keyframes rotateball{
+    0%{
+        transform: rotate(0deg);
+    }
+    
+    25%{
+        transform: rotate(90deg);
+    }
+    
+    50%{
+        transform: rotate(180deg);
+    }
+    
+    75%{
+        transform: rotate(270deg);
+    }
+    
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes slideball{
+    0%{
+        margin-left: 0;
+    }
+    
+    25%{
+        margin-left: 30px;
+    }
+    
+    50%{
+        margin-left: 60px;
+    }
+    
+    75%{
+        margin-left: 90px;
+    }
+    
+    100%{
+        margin-left: auto;
+    }
+}
+
+@keyframes switchbg{
+    from{
+        background: var(--white);
+    }
+    to{
+        bacgkround: transparent;
+    }
+}
+
+
+
+/*ANIMATIONS REVERSE*/
+
+@keyframes rotateballreverse{
+    0%{
+        transform: rotate(360deg);
+    }
+    
+    25%{
+        transform: rotate(270deg);
+    }
+    
+    50%{
+        transform: rotate(180deg);
+    }
+    
+    75%{
+        transform: rotate(90deg);
+    }
+    
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+
+@keyframes slideballreverse{
+    0%{
+        margin-left: auto;
+    }
+    
+    25%{
+        margin-left: 90px;
+    }
+    
+    50%{
+        margin-left: 60px;
+    }
+    
+    75%{
+        margin-left: 30px;
+    }
+    
+    100%{
+        margin-left: 0;
+    }
+}
+
+@keyframes switchbgreverse{
+    from{
+        background: transparent;
+    }
+    to{
+        bacgkround: var(--white);
+    }
+}
+
+
+
+
+
+
+
+
+/*MAIN*/
+.title-tab{
+    width: 100%;
+    margin: 150px 0 70px;
+    text-align: center;
+}
+
+.text-bar{
+    font: 18px var(--bold);
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.text-bar span{
+    color: var(--primary);
+}
+
+.switch-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.switch-container{
+    width: 200px;
+    height: 86px;
+    padding: 5px;
+    border-radius: 43px;
+    background: var(--white);
+    box-shadow: 0 0 5px 2px var(--dpale);
+}
+
+.switch-bg-light{
+    width: 190px;
+    height: 76px;
+    padding: 5px;
+    border-radius: 38px;
+    background: var(--pale);
+}
+
+.switch-tab{
+    width: 180px;
+    height: 66px;
+    padding: 3px;
+    border-radius: 33px;
+    background: var(--white);
+    /*ADD ANIMATION*/
+    animation-name: switchbgreverse;
+    animation-duration: 1s;
+}
+
+.switch-toggle{
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    border: 1px solid var(--pale);
+    border-radius: 50%;
+    background: var(--white);
+    position: relative;
+    transform: rotate(0deg);
+    /*ADD ANIMATION*/
+    animation-name: rotateballreverse, slideballreverse;
+    animation-duration: .5s;
+}
+
+.switch-indicator{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--pale);
+}
+
+
+/*WHEN SWITCH IS ACTIVE*/
+.switch-container.active{
+    box-shadow: 0 0 20px 10px var(--primary);
+}
+
+.switch-container.active .switch-bg-light{
+    background: var(--switch-on);
+}
+
+.switch-container.active .switch-tab{
+    background: transparent;
+    /*ADD ANIMATION*/
+    animation-name: switchbg;
+    animation-duration: 2s;
+}
+
+.switch-container.active .switch-toggle{
+    margin-left: auto;
+    background: var(--white);
+    /*ADD ANIMATION*/
+    animation-name: rotateball, slideball;
+    animation-duration: .5s;
+}
+
+.switch-container.active .switch-indicator{
+    background: var(--switch-on);
+}
+
+
+
